@@ -1,12 +1,24 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "sampletitle",
-    "subtitle": "sample subtitle which is longer",
-    "tags": ["tag1", "tag2", "tag3"],
-    "ArticleType": "triplog",
-    "Departure": "06/20/2020 8:00 New London",
-    "Arrival": "06/20/2020 22:00 New Haven",
-    "Diesel_Run_Time": 40,
-    "notes": "BLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA Bla"
-
+    "Posts": [{
+            "Title": "sampletitle",
+            "Subtitle": "sample subtitle which is longer",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "06/20/2020 8:00 New London",
+            "Arrival": "06/20/2020 22:00 New Haven",
+            "Diesel_Run_Time": 40,
+            "Notes": "BLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA Bla"
+        },
+        {
+            "Title": "sampletitle2",
+            "Subtitle": "sample subtitle which is longer2",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog2",
+            "Departure": "06/20/2020 8:00 New London2",
+            "Arrival": "06/20/2020 22:00 New Haven2",
+            "Diesel_Run_Time": 42,
+            "Notes": "BLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA Bla2"
+        }
+    ]
 }

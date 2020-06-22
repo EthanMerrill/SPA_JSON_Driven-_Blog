@@ -10,8 +10,8 @@ const rootDiv = document.getElementById('root');
 async function load_posts(contentData) {
     var JSONContent = await getFile(contentData)
     var objectContent = JSON.parse(JSONContent)
-    console.log(`JSONCONTENT: ${objectContent}`)
-    return createPost(objectContent)
+    console.log(`JSONCONTENT: ${objectContent.Posts[1].Title}`)
+    return createPost(objectContent.Posts[1])
         // rootDiv.innerHTML = HTMLTemplate
         // templateHandler("firstTemplate", objectContent)
 }
@@ -41,19 +41,29 @@ async function getFile(fileName) {
 }
 
 // This function takes the data and information on where to put it to inject the Data into the HTML Page
-function templateHandler(scriptID, contentDataJSON) {
-    console.log(scriptID, wrapperID, contentDataJSON)
-    var theScriptHTML = document.getElementById(scriptID).innerHTML
-    var theTemplate = Handlebars.compile(theScriptHTML)
-    var contextObj = (contentDataJSON)
-    var compiledData = theTemplate(contextObj)
+// function templateHandler(scriptID, contentDataJSON) {
+//     console.log(scriptID, wrapperID, contentDataJSON)
+//     var theScriptHTML = document.getElementById(scriptID).innerHTML
+//     var theTemplate = Handlebars.compile(theScriptHTML)
+//     var contextObj = (contentDataJSON)
+//     var compiledData = theTemplate(contextObj)
 
-    document.getElementById(wrapperID).innerHTML = compiledData
-}
+//     document.getElementById(wrapperID).innerHTML = compiledData
+// }
 
 function createPost(dataRecord) {
-
-    return `<h2 class="a-Series_Title">${dataRecord.title}</h2>
-    
+    /*html*/
+    var returnString = `
+    <h1 class="a-Series_Title">${dataRecord.title}</h1>
+    <h3> ${dataRecord.Subtitle}</h3>
+    <h3> ${dataRecord.Tags}</h3>
+    <h3> ${dataRecord.ArticleType}</h3>
+    <h3> ${dataRecord.Departure}</h3>
+    <h3> ${dataRecord.Arrival}</h3>
+    <h3> ${dataRecord.Diesel_Run_Time}</h3>
+    <p> ${dataRecord.Notes}</p>
     `
+
+    return returnString
+
 }
