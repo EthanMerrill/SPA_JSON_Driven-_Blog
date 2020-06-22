@@ -4,17 +4,31 @@ const rootDiv = document.getElementById('root');
 
 (window.init = async function init() {
     // set the inner html of the index(home) page
-    rootDiv.innerHTML = await load_posts('/data/site_data.json')
+    await load_posts('/data/site_data.json', rootDiv.innerHTML)
 })()
-
+//this function coordinates all others, similar to a main
 async function load_posts(contentData) {
+    //load and parse the json
     var JSONContent = await getFile(contentData)
     var objectContent = JSON.parse(JSONContent)
-    console.log(`JSONCONTENT: ${objectContent.Posts[1].Title}`)
+    console.log(`OBJECT CONTENT: ${objectContent}`)
+
+    //map the json file
+    htmlBuilder(objectContent)
+
     return createPost(objectContent.Posts[1])
         // rootDiv.innerHTML = HTMLTemplate
         // templateHandler("firstTemplate", objectContent)
 }
+
+//this function loops through the posts and generates html for each and appends that html to the page
+function htmlBuilder(objectContent) {
+    for (var prop in objectContent.Posts) {
+        console.log(`KEY:  ${prop} VALUE:${objectContent.Posts[prop].Title}`)
+    }
+}
+
+
 
 // function to get json files as a js object. the argument is the filename in string type
 // this function is designed to work on a server or locally
