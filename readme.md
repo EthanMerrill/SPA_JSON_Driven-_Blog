@@ -1,0 +1,1 @@
+This is a project to build a single page web application generated from a json file. The website will be a simple, filterable, one page blog. 
