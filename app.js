@@ -4,31 +4,34 @@ const rootDiv = document.getElementById('root');
 
 (window.init = async function init() {
     // set the inner html of the index(home) page
-    await load_posts('/data/site_data.json', rootDiv.innerHTML)
+    rootDiv.innerHTML = await load_posts('/data/site_data.json')
 })()
 //this function coordinates all others, similar to a main
-async function load_posts(contentData) {
+async function load_posts(contentData, parentNode) {
     //load and parse the json
     var JSONContent = await getFile(contentData)
     var objectContent = JSON.parse(JSONContent)
     console.log(`OBJECT CONTENT: ${objectContent}`)
+    postsHTML = htmlBuilder(objectContent)
+    console.log(postsHTML)
 
-    //map the json file
-    htmlBuilder(objectContent)
-
-    return createPost(objectContent.Posts[1])
+    return postsHTML
         // rootDiv.innerHTML = HTMLTemplate
         // templateHandler("firstTemplate", objectContent)
 }
 
 //this function loops through the posts and generates html for each and appends that html to the page
 function htmlBuilder(objectContent) {
+    let postsHTML = ""
     for (var prop in objectContent.Posts) {
-        console.log(`KEY:  ${prop} VALUE:${objectContent.Posts[prop].Title}`)
+        console.log(`KEY:  ${prop} VALUE:${objectContent.Posts[prop]}`)
+        postsHTML = postsHTML + createPost(objectContent.Posts[prop])
     }
+    return postsHTML
 }
 
-
+//Complete date plus hours and minutes:
+// YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)
 
 // function to get json files as a js object. the argument is the filename in string type
 // this function is designed to work on a server or locally
@@ -38,7 +41,7 @@ async function getFile(fileName) {
         console.log("try 1")
         let response = await fetch(fileName)
         let data = await response.text()
-        console.log(`DATA Returning: ${data}`)
+            // console.log(`DATA Returning: ${data}`)
         return data
     } catch (error) {
         console.error(error)
@@ -66,14 +69,17 @@ async function getFile(fileName) {
 // }
 
 function createPost(dataRecord) {
-    /*html*/
+    //fix the date
+    var departureDate = new Date(dataRecord.Departure)
+    var arrivalDate = new Date(dataRecord.Arrival)
+        /*html*/
     var returnString = `
-    <h1 class="a-Series_Title">${dataRecord.title}</h1>
+    <h1 class="a-Series_Title">${dataRecord.Title}</h1>
     <h3> ${dataRecord.Subtitle}</h3>
     <h3> ${dataRecord.Tags}</h3>
     <h3> ${dataRecord.ArticleType}</h3>
-    <h3> ${dataRecord.Departure}</h3>
-    <h3> ${dataRecord.Arrival}</h3>
+    <h3> ${departureDate}</h3>
+    <h3> ${arrivalDate}</h3>
     <h3> ${dataRecord.Diesel_Run_Time}</h3>
     <p> ${dataRecord.Notes}</p>
     `
@@ -81,3 +87,42 @@ function createPost(dataRecord) {
     return returnString
 
 }
+
+// map rendering functions
+// https://github.com/mpetazzoni/leaflet-gpx
+
+var map = L.map('map');
+L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
+}).addTo(map);
+
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+//get keys 
+(async function getKeys() {
+    tokens = await getFile("tokens.json")
+    tokenObject = JSON.parse(tokens)
+    const mapboxToken = tokenObject.Mapbox
+        // console.log(mapboxToken)
+}());
+
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: mapboxToken
+}).addTo(mymap);
+
+
+// var overlay = new JNC.Leaflet.NavionicsOverlay({
+// navKey: 'navionics_key',
+// chartType: JNC.NAVIONICS_CHARTS.NAUTICAL,
+// isTransparent: true,
+// // Enable Navionics logo with payoff
+// logoPayoff: true,
+// zIndex: 1
+// }));
+// map.setView([36.140751, -5.353585], 14);
+// overlay.addTo(map);

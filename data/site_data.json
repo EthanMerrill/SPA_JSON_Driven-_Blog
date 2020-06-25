@@ -1,24 +1,64 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "Posts": [{
-            "Title": "sampletitle",
-            "Subtitle": "sample subtitle which is longer",
-            "Tags": ["tag1", "tag2", "tag3"],
-            "ArticleType": "triplog",
-            "Departure": "06/20/2020 8:00 New London",
-            "Arrival": "06/20/2020 22:00 New Haven",
-            "Diesel_Run_Time": 40,
-            "Notes": "BLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA Bla"
-        },
-        {
-            "Title": "sampletitle2",
+            "Title": "Final Departure Preparation",
             "Subtitle": "sample subtitle which is longer2",
             "Tags": ["tag1", "tag2", "tag3"],
-            "ArticleType": "triplog2",
-            "Departure": "06/20/2020 8:00 New London2",
-            "Arrival": "06/20/2020 22:00 New Haven2",
-            "Diesel_Run_Time": 42,
-            "Notes": "BLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA BlaBLA Bla2"
+            "ArticleType": "triplog",
+            "Departure": "2020-06-10:12:15",
+            "Departure Port": "New London",
+            "Arrival": "2020-06-10:16:04",
+            "Arrival Port": "New London",
+            "Diesel_Run_Time": 30,
+            "Notes": "Shakedown Cruise for tomorrow's Departure. No Pumpout found at London City Pier. Bleeder Valve on Engine still leaking air into fuel line. Going to replace washer"
+        },
+        {
+            "Title": "New Fuel Filter Test Sail",
+            "Subtitle": "--",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-06-10:18:35",
+            "Departure Port": "New London",
+            "Arrival": "2020-06-10:20:15",
+            "Arrival Port": "New London",
+            "Diesel_Run_Time": 20,
+            "Notes": "Quick test sail to run the improved engine. Motored and sailed. Light winds."
+        },
+        {
+            "Title": "Fishers Island Daytrip",
+            "Subtitle": "--",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-06-10:12:00",
+            "Departure Port": "New London",
+            "Arrival": "2020-06-10:19:30",
+            "Arrival Port": "New London",
+            "Diesel_Run_Time": 30,
+            "Notes": "Anchored off Fishers Island. Fixed contact on engine starter motor."
+        },
+
+        {
+            "Title": "Stuffing Box Inspection",
+            "Subtitle": "--",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-06-10:17:30",
+            "Departure Port": "New London",
+            "Arrival": "2020-06-10:18:00",
+            "Arrival Port": "New London",
+            "Diesel_Run_Time": 30,
+            "Notes": "Stuffing Box Inspection. While stopped dripping once per 2 minutes. Unable to notice drips while running."
+        }
+    ],
+    "Maintenance": [{
+            "Title": "Filter Change",
+            "Date": "2020-06-16",
+            "Notes": "Changed the external and internal fuel filter on the Engine"
+        },
+        {
+            "Title": "Bleeder Valve Washer Replacement",
+            "Date": "2020-06-24",
+            "Notes": "Reduced leakage of Diesel while running. Still small leak. Less noticable Diesel smell when Running"
         }
     ]
 }
