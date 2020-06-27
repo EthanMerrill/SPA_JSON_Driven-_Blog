@@ -4,16 +4,16 @@ const rootDiv = document.getElementById('root');
 
 (window.init = async function init() {
     // set the inner html of the index(home) page
-    rootDiv.innerHTML = await load_posts('/data/site_data.json')
+    rootDiv.innerHTML = await load_posts('data/site_data.json')
 })()
 //this function coordinates all others, similar to a main
 async function load_posts(contentData, parentNode) {
     //load and parse the json
     var JSONContent = await getFile(contentData)
     var objectContent = JSON.parse(JSONContent)
-    console.log(`OBJECT CONTENT: ${objectContent}`)
+        // console.log(`OBJECT CONTENT: ${objectContent}`)
     postsHTML = htmlBuilder(objectContent)
-    console.log(postsHTML)
+        // console.log(postsHTML)
 
     return postsHTML
         // rootDiv.innerHTML = HTMLTemplate
@@ -24,7 +24,7 @@ async function load_posts(contentData, parentNode) {
 function htmlBuilder(objectContent) {
     let postsHTML = ""
     for (var prop in objectContent.Posts) {
-        console.log(`KEY:  ${prop} VALUE:${objectContent.Posts[prop]}`)
+        // console.log(`KEY:  ${prop} VALUE:${objectContent.Posts[prop]}`)
         postsHTML = postsHTML + createPost(objectContent.Posts[prop])
     }
     return postsHTML
@@ -36,9 +36,9 @@ function htmlBuilder(objectContent) {
 // function to get json files as a js object. the argument is the filename in string type
 // this function is designed to work on a server or locally
 async function getFile(fileName) {
-    console.log(`GET FILE Getting: ${fileName}`)
+    // console.log(`GET FILE Getting: ${fileName}`)
     try {
-        console.log("try 1")
+        // console.log("try 1")
         let response = await fetch(fileName)
         let data = await response.text()
             // console.log(`DATA Returning: ${data}`)
@@ -47,7 +47,7 @@ async function getFile(fileName) {
         console.error(error)
     }
     try {
-        console.log("try 2")
+        // console.log("try 2")
         fetch(fileName, { mode: 'no-cors' })
             .then(response => response.text())
             .then(data => console.log(data))
@@ -83,7 +83,6 @@ function createPost(dataRecord) {
     <h3> ${dataRecord.Diesel_Run_Time}</h3>
     <p> ${dataRecord.Notes}</p>
     `
-
     return returnString
 
 }
@@ -91,20 +90,13 @@ function createPost(dataRecord) {
 // map rendering functions
 // https://github.com/mpetazzoni/leaflet-gpx
 
-var map = L.map('map');
-L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
-}).addTo(map);
+// var map = L.map('mapid');
+// L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//     attribution: 'Map data &copy; <a href="http://www.osm.org">OpenStreetMap</a>'
+// }).addTo(map);
 
 var mymap = L.map('mapid').setView([51.505, -0.09], 13);
 
-//get keys 
-(async function getKeys() {
-    tokens = await getFile("tokens.json")
-    tokenObject = JSON.parse(tokens)
-    const mapboxToken = tokenObject.Mapbox
-        // console.log(mapboxToken)
-}());
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -112,8 +104,16 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     id: 'mapbox/streets-v11',
     tileSize: 512,
     zoomOffset: -1,
-    accessToken: mapboxToken
-}).addTo(mymap);
+    accessToken: "pk.eyJ1IjoiZXRoYW5tZXJyaWxsIiwiYSI6ImNrYnY2Z253ejAwb2kzMnMwaXBka3V5YngifQ.oj7CpA3D3Rlu9yxGFDN_iw",
+    crossOrigin: "samesite"
+}).addTo(mymap)
+
+var gpx = 'data/Navionics_archive_export.gpx'; // URL to your GPX file or the GPX itself
+var runLayer = omnivore.gpx(gpx)
+    .on('ready', function() {
+        mymap.fitBounds(runLayer.getBounds());
+    })
+    .addTo(mymap);
 
 
 // var overlay = new JNC.Leaflet.NavionicsOverlay({
