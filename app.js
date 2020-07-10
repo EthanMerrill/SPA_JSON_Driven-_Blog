@@ -98,8 +98,8 @@ function createPost(idx, dataRecord) {
     <div class='post-wrapper'>
     <h1 class="a-Series_Title">${dataRecord.Title}</h1>
     <h3> ${dataRecord.Subtitle}</h3>
-    <h3><b> Departure Date:</b> ${departureDate}</h3>
-    <h3><b> Arrival Date:</b> ${arrivalDate}</h3>
+    <h3><b> Departure Date:</b> ${departureDate}, ${dataRecord.Departure_Port}  </h3>
+    <h3><b> Arrival Date:</b> ${arrivalDate}, ${dataRecord.Arrival_Port}</h3>
     <h3> <b> Engine Run Time:</b>${dataRecord.Diesel_Run_Time}</h3>
     <p><b> Notes:</b> ${dataRecord.Notes}</p>
     <div class="map ${idx}" id=${dataRecord.Mapid}></div>
