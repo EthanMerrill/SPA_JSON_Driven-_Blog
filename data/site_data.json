@@ -11,6 +11,19 @@
             "Arrival Port": "Port Jefferson NY",
             "Diesel_Run_Time": 30,
             "Notes": "Light wind from the south. Wind died 11-1300. Anchored outside port Jefferson on the beach.",
+            "Mapid": "routes/PortJefferson-Northport.gpx"
+        },
+        {
+            "Title": "Across the Sound",
+            "Subtitle": "Hot and Slow",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-06-20:6:30",
+            "Departure Port": "New Haven CT",
+            "Arrival": "2020-06-20:17:15",
+            "Arrival Port": "Port Jefferson NY",
+            "Diesel_Run_Time": 30,
+            "Notes": "Light wind from the south. Wind died 11-1300. Anchored outside port Jefferson on the beach.",
             "Mapid": "routes/NewHaven-PortJefferson.gpx"
         },
         {

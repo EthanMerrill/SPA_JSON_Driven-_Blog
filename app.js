@@ -95,15 +95,15 @@ function createPost(idx, dataRecord) {
     var arrivalDate = new Date(dataRecord.Arrival)
         /*html*/
     var returnString = `
+    <div class='post-wrapper'>
     <h1 class="a-Series_Title">${dataRecord.Title}</h1>
     <h3> ${dataRecord.Subtitle}</h3>
-    <h3> ${dataRecord.Tags}</h3>
-    <h3> ${dataRecord.ArticleType}</h3>
-    <h3> ${departureDate}</h3>
-    <h3> ${arrivalDate}</h3>
-    <h3> ${dataRecord.Diesel_Run_Time}</h3>
-    <p> ${dataRecord.Notes}</p>
+    <h3><b> Departure Date:</b> ${departureDate}</h3>
+    <h3><b> Arrival Date:</b> ${arrivalDate}</h3>
+    <h3> <b> Engine Run Time:</b>${dataRecord.Diesel_Run_Time}</h3>
+    <p><b> Notes:</b> ${dataRecord.Notes}</p>
     <div class="map ${idx}" id=${dataRecord.Mapid}></div>
+    </div>
     `
     return returnString
 
@@ -117,7 +117,7 @@ function addMap(mapname, mapid) {
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
+        maxZoom: 10,
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
