@@ -11,7 +11,7 @@
             "Arrival_Port": "Block Island",
             "Diesel_Run_Time": 45,
             "Notes": "No wind leaving Montauk. Wind filled from the southwest. Easy passage. The Anchorage at Block island was very tight. A thunderstorm came through at around 23:00, with low winds associated.",
-            "Mapid": "routes/TrumanBeach-CoeclesHBR.gpx"
+            "Mapid": "routes/LakeMontauk-BlockIsland.gpx"
         },
         {
             "Title": "Coecles Harbor to Montauk",
@@ -62,8 +62,7 @@
             "Arrival": "2020-06-23:17:15",
             "Arrival_Port": "Northport NY",
             "Diesel_Run_Time": 50,
-            "Notes": "Motored to a sand bar to catch fish with Alex. Caught a shark and some flounder",
-            "Mapid": ""
+            "Notes": "Motored to a sand bar to catch fish with Alex. Caught a shark and some flounder"
         },
         {
             "Title": "Northport Trip",
@@ -75,8 +74,7 @@
             "Arrival": "2020-06-22:19:00",
             "Arrival_Port": "Northport NY",
             "Diesel_Run_Time": 20,
-            "Notes": "Fun Sail with Alex Around Eaton's Neck. Wind picked up out of the southwest making up beat upwind back into  port.",
-            "Mapid": ""
+            "Notes": "Fun Sail with Alex Around Eaton's Neck. Wind picked up out of the southwest making up beat upwind back into  port."
         },
         {
             "Title": "Port Jefferson to Northport",
@@ -90,19 +88,6 @@
             "Diesel_Run_Time": 150,
             "Notes": "Dead air. Motored the last 2 hrs because of current coming out of Northport Harbor",
             "Mapid": "routes/PortJefferson-Northport.gpx"
-        },
-        {
-            "Title": "Across the Sound",
-            "Subtitle": "Hot and Slow",
-            "Tags": ["tag1", "tag2", "tag3"],
-            "ArticleType": "triplog",
-            "Departure": "2020-06-20:6:30",
-            "Departure_Port": "New Haven CT",
-            "Arrival": "2020-06-20:17:15",
-            "Arrival_Port": "Port Jefferson NY",
-            "Diesel_Run_Time": 30,
-            "Notes": "Light wind from the south. Wind died 11-1300. Anchored outside port Jefferson on the beach.",
-            "Mapid": "routes/NewHaven-PortJefferson.gpx"
         },
         {
             "Title": "Across the Sound",

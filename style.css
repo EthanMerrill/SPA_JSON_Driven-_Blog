@@ -14,7 +14,7 @@
     padding: 5px;
     margin-left: auto;
     margin-right: auto;
-    width: 90%;
+    width: 80%;
 }
 
 h1 {
@@ -26,9 +26,9 @@ h2 {
 }
 
 h3 {
-    font-size: .5rem;
+    font-size: .65rem;
 }
 
 p {
-    font-size: .4rem;
+    font-size: .55rem;
 }

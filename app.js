@@ -38,11 +38,12 @@ function addMaps() {
         // console.log(`prop ${prop} Var ${prop}`)
         // console.log(mapElements[prop])
         try {
-            console.log(mapElements[prop].id)
+            // console.log(mapElements[prop].id)
             if (mapElements[prop].id !== "undefined") {
                 addMap(`TESTING`, mapElements[prop].id)
             } else {
-                // console.log("unable to find map attribute for post in json file")
+                console.log(`unable to find map attribute for post in json file. Removing map element: ${(mapElements[prop].id)}`)
+                    (mapElements[prop].id).remove()
             }
         } catch (e) {
             console.log(e)
@@ -94,8 +95,8 @@ function createPost(idx, dataRecord) {
     var departureDate = new Date(dataRecord.Departure)
     var arrivalDate = new Date(dataRecord.Arrival)
         /*html*/
-    var returnString = `
-    <div class='post-wrapper'>
+    var returnStringWithMap = `
+    <div class="post-wrapper ${idx}">
     <h1 class="a-Series_Title">${dataRecord.Title}</h1>
     <h3> ${dataRecord.Subtitle}</h3>
     <h3><b> Departure Date:</b> ${departureDate}, ${dataRecord.Departure_Port}  </h3>
@@ -105,10 +106,23 @@ function createPost(idx, dataRecord) {
     <div class="map ${idx}" id=${dataRecord.Mapid}></div>
     </div>
     `
-    return returnString
-
+        /*html*/
+    var returnStringNoMap = `
+    <div class='post-wrapper'>
+    <h1 class="a-Series_Title">${dataRecord.Title}</h1>
+    <h3> ${dataRecord.Subtitle}</h3>
+    <h3><b> Departure Date:</b> ${departureDate}, ${dataRecord.Departure_Port}  </h3>
+    <h3><b> Arrival Date:</b> ${arrivalDate}, ${dataRecord.Arrival_Port}</h3>
+    <h3> <b> Engine Run Time:</b>${dataRecord.Diesel_Run_Time}</h3>
+    <p><b> Notes:</b> ${dataRecord.Notes}</p>
+    </div>
+    `
+    if (typeof(dataRecord.Mapid) !== 'undefined') {
+        return returnStringWithMap
+    } else {
+        return returnStringNoMap
+    }
 }
-
 
 
 function addMap(mapname, mapid) {
@@ -127,7 +141,7 @@ function addMap(mapname, mapid) {
         // y: 1,
         // z: 1
     }).addTo(mapname)
-
+    console.log(`data/${mapid}`)
     var gpx = `data/${mapid}`; // URL to your GPX file or the GPX itself
     var runLayer = omnivore.gpx(gpx)
         .on('ready', function() {
