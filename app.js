@@ -11,9 +11,8 @@ const rootDiv = document.getElementById('root');
 async function load_posts(contentData, parentNode) {
     //load and parse the json
     var JSONContent = await getFile(contentData)
-    var objectContent = JSON.parse(JSONContent)
         // console.log(`OBJECT CONTENT: ${objectContent}`)
-    postsHTML = htmlBuilder(objectContent)
+    postsHTML = htmlBuilder(JSONContent)
         // console.log(postsHTML)
     return postsHTML
         // rootDiv.innerHTML = HTMLTemplate
@@ -21,11 +20,12 @@ async function load_posts(contentData, parentNode) {
 }
 
 //this function loops through the posts and generates html for each and appends that html to the page
-function htmlBuilder(objectContent) {
+function htmlBuilder(JSONContent) {
+    parsedJSON = JSON.parse(JSONContent)
     let postsHTML = ""
-    for (var prop in objectContent.Posts) {
+    for (var prop in parsedJSON.Posts) {
         // console.log(`KEY:  ${prop} VALUE:${objectContent.Posts[prop]}`)
-        postsHTML = postsHTML + createPost(prop, objectContent.Posts[prop])
+        postsHTML = postsHTML + createPost(prop, parsedJSON.Posts[prop])
     }
     return postsHTML
 }
@@ -52,10 +52,6 @@ function addMaps() {
 }
 
 
-//Complete date plus hours and minutes:
-// YYYY-MM-DDThh:mmTZD (eg 1997-07-16T19:20+01:00)
-
-// function to get json files as a js object. the argument is the filename in string type
 // this function is designed to work on a server or locally
 async function getFile(fileName) {
     // console.log(`GET FILE Getting: ${fileName}`)
@@ -79,16 +75,7 @@ async function getFile(fileName) {
     }
 }
 
-// This function takes the data and information on where to put it to inject the Data into the HTML Page
-// function templateHandler(scriptID, contentDataJSON) {
-//     console.log(scriptID, wrapperID, contentDataJSON)
-//     var theScriptHTML = document.getElementById(scriptID).innerHTML
-//     var theTemplate = Handlebars.compile(theScriptHTML)
-//     var contextObj = (contentDataJSON)
-//     var compiledData = theTemplate(contextObj)
 
-//     document.getElementById(wrapperID).innerHTML = compiledData
-// }
 
 function createPost(idx, dataRecord) {
     //fix the date
@@ -126,7 +113,10 @@ function createPost(idx, dataRecord) {
 
 
 function addMap(mapname, mapid) {
-    console.log(mapname, mapid)
+    console.log((mapid[0]))
+        // for (i in mapid) {
+        //     console.log(mapid[i])
+        // }
     var mapname = L.map(mapid)
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -150,17 +140,3 @@ function addMap(mapname, mapid) {
         .addTo(mapname);
     return [mapname, mapid]
 }
-
-
-
-
-// var overlay = new JNC.Leaflet.NavionicsOverlay({
-// navKey: 'navionics_key',
-// chartType: JNC.NAVIONICS_CHARTS.NAUTICAL,
-// isTransparent: true,
-// // Enable Navionics logo with payoff
-// logoPayoff: true,
-// zIndex: 1
-// }));
-// map.setView([36.140751, -5.353585], 14);
-// overlay.addTo(map);
