@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+
+</head>
+
+<body>
+    <form>
+        <ul>
+
+            <li>
+                <label for="">Departure Date</label><br>
+                <input type="datetime-local" id="DepartureDate" name="DepartureDate">
+            </li>
+            <br>
+            <li>
+                <label for="DeparturePort">Departure Port</label><br>
+                <input type="text" id="DeparturePort" name="DeparturePort">
+            </li>
+            <br>
+            <li>
+                <label for="">Arrival Date</label><br>
+                <input type="datetime-local" id="ArrivalDate" name="ArrivalDate">
+            </li>
+            <br>
+            <li>
+                <label for="ArrivalPort">Arrival Port</label><br>
+                <input type="text" id="ArrivalPort" name="ArrivalPort">
+            </li>
+            <br>
+            <li>
+                <label for="Distance">Distance</label><br>
+                <input type="number" id="Distance" name="Distance">
+            </li>
+            <br>
+            <li>
+                <label for="engineRunTime">Engine Run Time</label><br>
+                <input type="number" id="engineRunTime" name="engineRunTime">
+            </li>
+            <br>
+            <li>
+                <label for="Notes">Notes</label><br>
+                <input type="text" id="Notes" name="Notes"><br>
+            </li>
+            <br>
+            <li>
+                <button type="submit" value="Submit">Submit</button>
+            </li>
+        </ul>
+
+    </form>
+
+    <form id="myForm">
+        <label for="myName">Send me your name:</label>
+        <input id="myName" name="name" value="John">
+        <input type="submit" value="Send Me!">
+    </form>
+</body>
+
+<script src="app.js"></script>
+<script src="formSubmission.js"></script>
