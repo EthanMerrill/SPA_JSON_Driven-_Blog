@@ -100,7 +100,7 @@ function createPost(idx, dataRecord) {
     <h3> ${dataRecord.Subtitle}</h3>
     <h3><b> Departure Date:</b> ${departureDate}, ${dataRecord.Departure_Port}  </h3>
     <h3><b> Arrival Date:</b> ${arrivalDate}, ${dataRecord.Arrival_Port}</h3>
-    <h3> <b> Engine Run Time:</b>${dataRecord.Diesel_Run_Time}</h3>
+    <h3> <b> Engine Run Time:</b> ${dataRecord.Diesel_Run_Time}</h3>
     <p><b> Notes:</b> ${dataRecord.Notes}</p>
     </div>
     `

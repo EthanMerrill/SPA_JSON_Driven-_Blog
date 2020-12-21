@@ -1,6 +1,39 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "Posts": [{
+            "Title": "Weepacket Islands to Nonomset",
+            "Subtitle": "WIND!",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-07-02:6:30",
+            "Departure_Port": "Weepacket Islands",
+            "Arrival": "2020-07-02:12:30",
+            "Arrival_Port": "Nonomset",
+            "Diesel_Run_Time": 120,
+            "Notes": "We were rudely awoken by whitecaps and gusty winds funneling right into our anchorage. "
+        }, {
+            "Title": "Newport to Weepacket Islands",
+            "Subtitle": "Easy Downwind",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-07-02:11:17",
+            "Departure_Port": "Newport",
+            "Arrival": "2020-07-02:17:35",
+            "Arrival_Port": "Weepacket Islands",
+            "Diesel_Run_Time": 30,
+            "Notes": "Easy Downwind most of the way. Current brought us into Buzzards Bay easily. We found a nice isolated anchorage off Weepacket islands which is owned by the Forbes family. The island was covered in private property signs, so we admired it from afar."
+        }, {
+            "Title": "Block Island to Newport",
+            "Subtitle": "Cloudy Upwind",
+            "Tags": ["tag1", "tag2", "tag3"],
+            "ArticleType": "triplog",
+            "Departure": "2020-06-30:7:16",
+            "Departure_Port": "Block Island",
+            "Arrival": "2020-06-30:18:59",
+            "Arrival_Port": "Newport",
+            "Diesel_Run_Time": 20,
+            "Notes": "Cloudy day, mostly upwind. Wind picked up and went right. Saw wind turbines off Block Island. we paid for a dock space in newport so we could use the showers at the marina. It was worth the $30."
+        }, {
             "Title": "Lake Montauk to Block Island",
             "Subtitle": "First open ocean passage",
             "Tags": ["tag1", "tag2", "tag3"],

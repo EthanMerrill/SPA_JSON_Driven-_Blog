@@ -1,6 +1,6 @@
 .map {
-    height: 150px;
-    width: 70%;
+    height: 300px;
+    width: min(70%, 600px);
     margin: auto;
     padding: 10px;
     border-radius: 5px;
@@ -10,25 +10,25 @@
     border-radius: 5px;
     border-color: black;
     border-style: solid;
-    margin-top: 12px;
-    padding: 5px;
+    margin-top: 60px;
+    padding: 25px;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 75%;
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 h2 {
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 h3 {
-    font-size: .65rem;
+    font-size: 1.2rem;
 }
 
 p {
-    font-size: .55rem;
+    font-size: 1rem;
 }

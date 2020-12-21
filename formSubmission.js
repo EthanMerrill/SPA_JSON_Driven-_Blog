@@ -32,3 +32,4 @@ window.addEventListener("load", function() {
         sendData();
     });
 });
+//https://www.moxio.com/blog/12/how-to-make-a-cross-domain-request-in-javascript-using-cors
